@@ -182,3 +182,49 @@ for i in range(3):
         indicator_x = 50
     elif i == 1:
         indicator_x = 105
+
+def check_guess(guess_to_check):
+    # Goes through each letter and checks if it should be green, yellow, or grey.
+    global current_guess, current_guess_string, guesses_count, current_letter_bg_x, game_result
+    game_decided = False
+    for i in range(5):
+        lowercase_letter = guess_to_check[i].text.lower()
+        if lowercase_letter in CORRECT_WORD:
+            if lowercase_letter == CORRECT_WORD[i]:
+                guess_to_check[i].bg_color = GREEN
+                for indicator in indicators:
+                    if indicator.text == lowercase_letter.upper():
+                        indicator.bg_color = GREEN
+                        indicator.draw()
+                guess_to_check[i].text_color = "white"
+                if not game_decided:
+                    game_result = "W"
+            else:
+                guess_to_check[i].bg_color = YELLOW
+                for indicator in indicators:
+                    if indicator.text == lowercase_letter.upper():
+                        indicator.bg_color = YELLOW
+                        indicator.draw()
+                guess_to_check[i].text_color = "white"
+                game_result = ""
+                game_decided = True
+        else:
+            guess_to_check[i].bg_color = GREY
+            for indicator in indicators:
+                if indicator.text == lowercase_letter.upper():
+                    indicator.bg_color = GREY
+                    indicator.draw()
+            guess_to_check[i].text_color = "white"
+            game_result = ""
+            game_decided = True
+        guess_to_check[i].draw()
+        pygame.display.update()
+    
+    guesses_count += 1
+    current_guess = []
+    current_guess_string = ""
+    current_letter_bg_x = 110
+
+    if guesses_count == 6 and game_result == "":
+        game_result = "L"
+
