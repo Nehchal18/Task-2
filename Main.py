@@ -1,4 +1,6 @@
-import pygame
+easy_button = Button(320, 160, easy_img, 0.6)
+medium_button = Button(320, 420, medium_img, 0.6)
+hard_button = Button(320, 650, hard_img, 0.6)import pygame
 import sys
 import random
 from words import *
@@ -132,3 +134,7 @@ class Button():
 		surface.blit(self.image, (self.rect.x, self.rect.y))
 
 		return action
+
+easy_button = Button(320, 160, easy_img, 0.6)
+medium_button = Button(320, 420, medium_img, 0.6)
+hard_button = Button(320, 650, hard_img, 0.6)
