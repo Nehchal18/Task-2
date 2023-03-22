@@ -27,3 +27,34 @@ GREY = "#787c7e"
 OUTLINE = "#d3d6da"
 FILLED_OUTLINE = "#878a8c"
 
+# CORRECT_WORD = "coder" #random.choice(WORDS)
+
+ALPHABET = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"]
+
+GUESSED_LETTER_FONT = pygame.font.Font("/Users/nehchal./Desktop/coding/python.py/wordle/assets_wordle/FreeSansBold.otf", 50)
+AVAILABLE_LETTER_FONT = pygame.font.Font("/Users/nehchal./Desktop/coding/python.py/wordle/assets_wordle/FreeSansBold.otf", 25)
+
+SCREEN.fill("white")
+SCREEN.blit(BACKGROUND, BACKGROUND_RECT)
+pygame.display.update()
+
+LETTER_X_SPACING = 85
+LETTER_Y_SPACING = 12
+LETTER_SIZE = 75
+
+# Global variables
+
+guesses_count = 0
+
+# guesses is a 2D list that will store guesses. A guess will be a list of letters.
+# The list will be iterated through and each letter in each guess will be drawn on the screen.
+guesses = [[]] * 6
+
+current_guess = []
+current_guess_string = ""
+current_letter_bg_x = 110
+
+# Indicators is a list storing all the Indicator object. An indicator is that button thing with all the letters you see.
+indicators = []
+
+game_result = ""
