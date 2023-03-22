@@ -240,3 +240,43 @@ def play_again():
     SCREEN.blit(play_again_text, play_again_rect)
     pygame.display.update()
 
+def reset():
+    # Resets all global variables to their default states.
+    global guesses_count, CORRECT_WORD, guesses, current_guess, current_guess_string, game_result
+    SCREEN.fill("white")
+    SCREEN.blit(BACKGROUND, BACKGROUND_RECT)
+    while True:
+        SCREEN.fill("white")
+        if easy_button.draw(SCREEN):
+            SCREEN.fill("white")
+            SCREEN.blit(BACKGROUND, BACKGROUND_RECT)
+            pygame.display.update()
+            CORRECT_WORD = random.choice(easy)
+            break
+        if medium_button.draw(SCREEN):
+            SCREEN.fill("white")
+            SCREEN.blit(BACKGROUND, BACKGROUND_RECT)
+            pygame.display.update()
+            CORRECT_WORD = random.choice(medium)
+            break
+        if hard_button.draw(SCREEN):
+            SCREEN.fill("white")
+            SCREEN.blit(BACKGROUND, BACKGROUND_RECT)
+            pygame.display.update()
+            CORRECT_WORD = random.choice(hard)
+            break
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+        pygame.display.update()
+    guesses_count = 0
+    guesses = [[]] * 6
+    current_guess = []
+    current_guess_string = ""
+    game_result = ""
+    pygame.display.update()
+    for indicator in indicators:
+        indicator.bg_color = OUTLINE
+        indicator.draw()
+
