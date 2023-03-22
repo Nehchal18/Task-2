@@ -138,3 +138,32 @@ class Button():
 easy_button = Button(320, 160, easy_img, 0.6)
 medium_button = Button(320, 420, medium_img, 0.6)
 hard_button = Button(320, 650, hard_img, 0.6)
+
+# Selecting level
+while True:
+    SCREEN.fill("white")
+    if easy_button.draw(SCREEN):
+        SCREEN.fill("white")
+        SCREEN.blit(BACKGROUND, BACKGROUND_RECT)
+        pygame.display.update()
+        CORRECT_WORD = "apple"
+        break
+    if medium_button.draw(SCREEN):
+        SCREEN.fill("white")
+        SCREEN.blit(BACKGROUND, BACKGROUND_RECT)
+        pygame.display.update()
+        CORRECT_WORD = "coder"
+        break
+    if hard_button.draw(SCREEN):
+        SCREEN.fill("white")
+        SCREEN.blit(BACKGROUND, BACKGROUND_RECT)
+        pygame.display.update()
+        CORRECT_WORD = "adieu"
+        break
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+    pygame.display.update()
+
+
