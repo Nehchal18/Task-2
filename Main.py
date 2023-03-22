@@ -280,3 +280,47 @@ def reset():
         indicator.bg_color = OUTLINE
         indicator.draw()
 
+
+def create_new_letter():
+    # Creates a new letter and adds it to the guess.
+    global current_guess_string, current_letter_bg_x
+    current_guess_string += key_pressed
+    new_letter = Letter(key_pressed, (current_letter_bg_x, guesses_count*100+LETTER_Y_SPACING))
+    current_letter_bg_x += LETTER_X_SPACING
+    guesses[guesses_count].append(new_letter)
+    current_guess.append(new_letter)
+    for guess in guesses:
+        for letter in guess:
+            letter.draw()
+
+def delete_letter():
+    # Deletes the last letter from the guess.
+    global current_guess_string, current_letter_bg_x
+    guesses[guesses_count][-1].delete()
+    guesses[guesses_count].pop()
+    current_guess_string = current_guess_string[:-1]
+    current_guess.pop()
+    current_letter_bg_x -= LETTER_X_SPACING
+
+while True:
+    if game_result != "":
+        play_again()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RETURN:
+                if game_result != "":
+                    reset()
+                else:
+                    if len(current_guess_string) == 5 and current_guess_string.lower() in WORDS+allow+easy+medium+hard:
+                        check_guess(current_guess)
+            elif event.key == pygame.K_BACKSPACE:
+                if len(current_guess_string) > 0:
+                    delete_letter()
+            else:
+                key_pressed = event.unicode.upper()
+                if key_pressed in "QWERTYUIOPASDFGHJKLZXCVBNM" and key_pressed != "":
+                    if len(current_guess_string) < 5:
+                        create_new_letter()
