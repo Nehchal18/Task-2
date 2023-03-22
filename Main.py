@@ -17,3 +17,13 @@ easy_img = pygame.image.load("/Users/nehchal./Downloads/easy.gif").convert_alpha
 medium_img = pygame.image.load("/Users/nehchal./Downloads/medium.gif").convert_alpha()
 hard_img = pygame.image.load("/Users/nehchal./Downloads/hard.gif").convert_alpha()
 
+
+pygame.display.set_caption("Wordle!")
+pygame.display.set_icon(ICON)
+
+GREEN = "#6aaa64"
+YELLOW = "#c9b458"
+GREY = "#787c7e"
+OUTLINE = "#d3d6da"
+FILLED_OUTLINE = "#878a8c"
+
