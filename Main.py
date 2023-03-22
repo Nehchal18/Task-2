@@ -167,3 +167,18 @@ while True:
     pygame.display.update()
 
 
+# Drawing the indicators on the screen.
+
+indicator_x, indicator_y = 20, 600
+
+for i in range(3):
+    for letter in ALPHABET[i]:
+        new_indicator = Indicator(indicator_x, indicator_y, letter)
+        indicators.append(new_indicator)
+        new_indicator.draw()
+        indicator_x += 60
+    indicator_y += 100
+    if i == 0:
+        indicator_x = 50
+    elif i == 1:
+        indicator_x = 105
