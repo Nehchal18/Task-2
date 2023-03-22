@@ -228,3 +228,15 @@ def check_guess(guess_to_check):
     if guesses_count == 6 and game_result == "":
         game_result = "L"
 
+def play_again():
+    # Puts the play again text on the screen.
+    pygame.draw.rect(SCREEN, "white", (10, 600, 1000, 600))
+    play_again_font = pygame.font.Font("/Users/nehchal./Desktop/coding/python.py/wordle/assets_wordle/FreeSansBold.otf", 40)
+    play_again_text = play_again_font.render("Press ENTER to Play Again!", True, "black")
+    play_again_rect = play_again_text.get_rect(center=(WIDTH/2, 700))
+    word_was_text = play_again_font.render(f"The word was {CORRECT_WORD}!", True, "black")
+    word_was_rect = word_was_text.get_rect(center=(WIDTH/2, 650))
+    SCREEN.blit(word_was_text, word_was_rect)
+    SCREEN.blit(play_again_text, play_again_rect)
+    pygame.display.update()
+
